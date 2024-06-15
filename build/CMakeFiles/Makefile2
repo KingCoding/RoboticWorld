@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/ubuntu/RoboticWorld/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/ActorPLugin.dir/all
+all: CMakeFiles/ActorPlugin.dir/all
 
 .PHONY : all
 
@@ -63,36 +63,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/ActorPLugin.dir/clean
+clean: CMakeFiles/ActorPlugin.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ActorPLugin.dir
+# Target rules for target CMakeFiles/ActorPlugin.dir
 
 # All Build rule for target.
-CMakeFiles/ActorPLugin.dir/all:
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/depend
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/RoboticWorld/build/CMakeFiles --progress-num=1,2 "Built target ActorPLugin"
-.PHONY : CMakeFiles/ActorPLugin.dir/all
+CMakeFiles/ActorPlugin.dir/all:
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/depend
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/RoboticWorld/build/CMakeFiles --progress-num=1,2 "Built target ActorPlugin"
+.PHONY : CMakeFiles/ActorPlugin.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ActorPLugin.dir/rule: cmake_check_build_system
+CMakeFiles/ActorPlugin.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/RoboticWorld/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ActorPLugin.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ActorPlugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/RoboticWorld/build/CMakeFiles 0
-.PHONY : CMakeFiles/ActorPLugin.dir/rule
+.PHONY : CMakeFiles/ActorPlugin.dir/rule
 
 # Convenience name for target.
-ActorPLugin: CMakeFiles/ActorPLugin.dir/rule
+ActorPlugin: CMakeFiles/ActorPlugin.dir/rule
 
-.PHONY : ActorPLugin
+.PHONY : ActorPlugin
 
 # clean rule for target.
-CMakeFiles/ActorPLugin.dir/clean:
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/clean
-.PHONY : CMakeFiles/ActorPLugin.dir/clean
+CMakeFiles/ActorPlugin.dir/clean:
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/clean
+.PHONY : CMakeFiles/ActorPlugin.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

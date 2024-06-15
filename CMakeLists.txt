@@ -5,5 +5,5 @@ include_directories(${GAZEBO_INCLUDE_DIRS} ${script})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 
-add_library(ActorPLugin SHARED script/ActorPLugin.cc)
-target_link_libraries(ActorPLugin ${GAZEBO_LIBRARIES})
+add_library(ActorPlugin SHARED script/ActorPlugin.cc)
+target_link_libraries(ActorPlugin ${GAZEBO_LIBRARIES})

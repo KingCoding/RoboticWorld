@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ActorPLugin
+# Target rules for targets named ActorPlugin
 
 # Build rule for target.
-ActorPLugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ActorPLugin
-.PHONY : ActorPLugin
+ActorPlugin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ActorPlugin
+.PHONY : ActorPlugin
 
 # fast build rule for target.
-ActorPLugin/fast:
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/build
-.PHONY : ActorPLugin/fast
+ActorPlugin/fast:
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/build
+.PHONY : ActorPlugin/fast
 
-script/ActorPLugin.o: script/ActorPLugin.cc.o
+script/ActorPlugin.o: script/ActorPlugin.cc.o
 
-.PHONY : script/ActorPLugin.o
+.PHONY : script/ActorPlugin.o
 
 # target to build an object file
-script/ActorPLugin.cc.o:
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/script/ActorPLugin.cc.o
-.PHONY : script/ActorPLugin.cc.o
+script/ActorPlugin.cc.o:
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/script/ActorPlugin.cc.o
+.PHONY : script/ActorPlugin.cc.o
 
-script/ActorPLugin.i: script/ActorPLugin.cc.i
+script/ActorPlugin.i: script/ActorPlugin.cc.i
 
-.PHONY : script/ActorPLugin.i
+.PHONY : script/ActorPlugin.i
 
 # target to preprocess a source file
-script/ActorPLugin.cc.i:
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/script/ActorPLugin.cc.i
-.PHONY : script/ActorPLugin.cc.i
+script/ActorPlugin.cc.i:
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/script/ActorPlugin.cc.i
+.PHONY : script/ActorPlugin.cc.i
 
-script/ActorPLugin.s: script/ActorPLugin.cc.s
+script/ActorPlugin.s: script/ActorPlugin.cc.s
 
-.PHONY : script/ActorPLugin.s
+.PHONY : script/ActorPlugin.s
 
 # target to generate assembly for a file
-script/ActorPLugin.cc.s:
-	$(MAKE) -f CMakeFiles/ActorPLugin.dir/build.make CMakeFiles/ActorPLugin.dir/script/ActorPLugin.cc.s
-.PHONY : script/ActorPLugin.cc.s
+script/ActorPlugin.cc.s:
+	$(MAKE) -f CMakeFiles/ActorPlugin.dir/build.make CMakeFiles/ActorPlugin.dir/script/ActorPlugin.cc.s
+.PHONY : script/ActorPlugin.cc.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ActorPLugin"
-	@echo "... script/ActorPLugin.o"
-	@echo "... script/ActorPLugin.i"
-	@echo "... script/ActorPLugin.s"
+	@echo "... ActorPlugin"
+	@echo "... script/ActorPlugin.o"
+	@echo "... script/ActorPlugin.i"
+	@echo "... script/ActorPlugin.s"
 .PHONY : help
 
 

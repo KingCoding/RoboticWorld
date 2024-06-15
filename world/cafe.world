@@ -2,6 +2,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
   <world name="default">
+    <plugin name="ActorPlugin" filename="libActorPlugin.so"/>
     <gui>
       <camera name="user_camera">
         <pose>0 -18 8.0 0 0.523 1.5707</pose>

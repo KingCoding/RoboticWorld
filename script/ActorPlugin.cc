@@ -19,7 +19,7 @@
 
 #include <ignition/math.hh>
 #include "gazebo/physics/physics.hh"
-//#include "plugins/ActorPlugin.hh"
+#include "ActorPlugin.hh"
 
 using namespace gazebo;
 GZ_REGISTER_MODEL_PLUGIN(ActorPlugin)
