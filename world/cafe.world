@@ -78,7 +78,7 @@
          starting location. Modify the <target> elements of each actor to
          change their destination. The <target_weight> can be used to
          tune the vector field used by the ActorPlugin to control the Actor. -->
-    <actor name="actor1">
+    <actor name="visitor1">
       <pose>0 1 1.25 0 0 0</pose>
       <skin>
         <filename>walk.dae</filename>
@@ -104,7 +104,7 @@
       </plugin>
     </actor>
 
-    <actor name="actor2">
+    <actor name="visitor2">
       <pose>-2 -2 1.25 0 0 0</pose>
       <skin>
         <filename>walk.dae</filename>
@@ -127,6 +127,28 @@
       </plugin>
     </actor>
 
+    <actor name="administrator">
+      <pose>-2 -2 1.25 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="standing">
+        <filename>stand.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="actor2_plugin" filename="libActorPlugin.so">
+        <target>3 2 1.24</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <ignore_obstacles>
+          <model>cafe</model>
+          <model>ground_plane</model>
+        </ignore_obstacles>
+      </plugin>
+    </actor>
   </world>
 </sdf>
 
