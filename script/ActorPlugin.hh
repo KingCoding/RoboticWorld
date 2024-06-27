@@ -74,6 +74,12 @@ namespace gazebo
     /// \brief Current target location
     private: ignition::math::Vector3d target;
 
+    /// \brief Current target location
+    private: ignition::math::Vector3d frontDesk1;
+
+    /// \brief Current target location
+    private: ignition::math::Vector3d frontDesk2;
+
     /// \brief Target location weight (used for vector field)
     private: double targetWeight = 1.0;
 
