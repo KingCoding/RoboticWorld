@@ -95,6 +95,10 @@ void ActorPlugin::Reset()
   this->velocity = 0.8;
   this->lastUpdate = 0;
 
+  this->frontDesk1 = this->sdf->Get<ignition::math::Vector3d>("front_desk1");
+  this->frontDesk2 = this->sdf->Get<ignition::math::Vector3d>("front_desk2");
+
+  
   if (this->sdf && this->sdf->HasElement("target"))
     this->target = this->sdf->Get<ignition::math::Vector3d>("target");
   else
