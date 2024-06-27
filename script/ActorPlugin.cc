@@ -126,6 +126,12 @@ void ActorPlugin::ChooseNewTarget()
   }
   this->target = newTarget;
 }
+////////////////////////////////////////////////////////////////
+void ActorPlugin::SetAnimation()
+{
+
+
+}
 
 /////////////////////////////////////////////////
 void ActorPlugin::HandleObstacles(ignition::math::Vector3d &_pos)
