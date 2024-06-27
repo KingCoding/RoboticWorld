@@ -26,6 +26,10 @@ GZ_REGISTER_MODEL_PLUGIN(ActorPlugin)
 
 #define WALKING_ANIMATION "walking"
 
+#define TALKING_ANIMATION "talk_a"
+
+#define STANDING_ANIMATION "stand"
+
 /////////////////////////////////////////////////
 ActorPlugin::ActorPlugin()
 {
