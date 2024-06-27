@@ -47,6 +47,9 @@ namespace gazebo
     /// \brief Helper function to choose a new target location
     private: void ChooseNewTarget();
 
+    /// \brief Helper function to set a new animation for the current actor
+    private: void SetAnimation();
+
     /// \brief Helper function to avoid obstacles. This implements a very
     /// simple vector-field algorithm.
     /// \param[in] _pos Direction vector that should be adjusted according
