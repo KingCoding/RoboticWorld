@@ -73,7 +73,8 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     this->animationFactor = 4.5;
 
   // Add our own name to models we should ignore when avoiding obstacles.
-  this->ignoreModels.push_back(this->actor->GetName());
+  if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
+   this->ignoreModels.push_back(this->actor->GetName());
 
   // Read in the other obstacles to ignore
   if (_sdf->HasElement("ignore_obstacles"))
