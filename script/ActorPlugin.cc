@@ -99,19 +99,22 @@ void ActorPlugin::Reset()
   else
     this->target = ignition::math::Vector3d(0, -5, 1.2138);
 
-  auto skelAnims = this->actor->SkeletonAnimations();
-  if (skelAnims.find(WALKING_ANIMATION) == skelAnims.end())
+  if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
   {
-    gzerr << "Skeleton animation " << WALKING_ANIMATION << " not found.\n";
+    this->SetAnimation(STANDING_ANIMATION);
   }
   else
   {
-    // Create custom trajectory
-    this->trajectoryInfo.reset(new physics::TrajectoryInfo());
-    this->trajectoryInfo->type = WALKING_ANIMATION;
-    this->trajectoryInfo->duration = 1.0;
-
-    this->actor->SetCustomTrajectory(this->trajectoryInfo);
+      auto skelAnims = this->actor->SkeletonAnimations();
+      if (skelAnims.find(WALKING_ANIMATION) == skelAnims.end())
+      {
+        gzerr << "Skeleton animation " << WALKING_ANIMATION << " not found.\n";
+      }
+      else
+      {
+        // Create custom trajectory
+        this->SetAnimation(WALKING_ANIMATION);
+      }
   }
 }
 
