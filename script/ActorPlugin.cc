@@ -101,6 +101,7 @@ void ActorPlugin::Reset()
 
   if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
   {
+    this->target = ignition::math::Vector3d(0, -5, 1.2138);
     this->SetAnimation(STANDING_ANIMATION);
   }
   else
