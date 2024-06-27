@@ -30,6 +30,13 @@ GZ_REGISTER_MODEL_PLUGIN(ActorPlugin)
 
 #define STANDING_ANIMATION "stand"
 
+#define ADMINISTRATOR_ACTOR "administrator"
+
+#define VISITOR1_ACTOR "visitor1"
+
+#define VISITOR2_ACTOR "visitor2"
+
+
 /////////////////////////////////////////////////
 ActorPlugin::ActorPlugin()
 {
