@@ -133,7 +133,11 @@ void ActorPlugin::ChooseNewTarget()
 ////////////////////////////////////////////////////////////////
 void ActorPlugin::SetAnimation(string & anim)
 {
+  this->trajectoryInfo.reset(new physics::TrajectoryInfo());
+  this->trajectoryInfo->type = anim;
+  this->trajectoryInfo->duration = 1.0;
 
+  this->actor->SetCustomTrajectory(this->trajectoryInfo);
 
 }
 
