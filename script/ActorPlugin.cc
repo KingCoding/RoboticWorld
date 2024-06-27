@@ -127,7 +127,7 @@ void ActorPlugin::ChooseNewTarget()
   this->target = newTarget;
 }
 ////////////////////////////////////////////////////////////////
-void ActorPlugin::SetAnimation()
+void ActorPlugin::SetAnimation(string & anim)
 {
 
 
