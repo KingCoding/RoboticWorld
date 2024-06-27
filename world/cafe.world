@@ -84,7 +84,7 @@
         <interpolate_x>true</interpolate_x>
       </animation>
 
-      <plugin name="actor1_plugin" filename="libActorPlugin.so">
+      <plugin name="visitor1_plugin" filename="libActorPlugin.so">
         <target>0 -5 1.2138</target>
         <target_weight>1.15</target_weight>
         <obstacle_weight>1.8</obstacle_weight>
@@ -95,6 +95,8 @@
           <model>cafe</model>
           <model>ground_plane</model>
         </ignore_obstacles>
+        <front_desk1>1.5 -5.5 1.25</front_desk1>
+        <front_desk2>0 -5.5 1.25</front_desk2>
       </plugin>
     </actor>
 
@@ -109,7 +111,7 @@
         <scale>1.000000</scale>
         <interpolate_x>true</interpolate_x>
       </animation>
-      <plugin name="actor2_plugin" filename="libActorPlugin.so">
+      <plugin name="visitor2_plugin" filename="libActorPlugin.so">
         <target>3 2 1.24</target>
         <target_weight>1.15</target_weight>
         <obstacle_weight>1.8</obstacle_weight>
@@ -118,6 +120,8 @@
           <model>cafe</model>
           <model>ground_plane</model>
         </ignore_obstacles>
+        <front_desk1>1.5 -5.5 1.25</front_desk1>
+        <front_desk2>0 -5.5 1.25</front_desk2>
       </plugin>
     </actor>
 
@@ -132,8 +136,8 @@
         <scale>1.000000</scale>
         <interpolate_x>true</interpolate_x>
       </animation>
-      <plugin name="actor2_plugin" filename="libActorPlugin.so">
-        <target>3 2 1.24</target>
+      <plugin name="administrator_plugin" filename="libActorPlugin.so">
+        <target>-2 -5.5 1.25</target>
         <target_weight>1.15</target_weight>
         <obstacle_weight>1.8</obstacle_weight>
         <animation_factor>5.1</animation_factor>
@@ -141,6 +145,8 @@
           <model>cafe</model>
           <model>ground_plane</model>
         </ignore_obstacles>
+        <front_desk1>1.5 -5.5 1.25</front_desk1>
+        <front_desk2>0 -5.5 1.25</front_desk2>
       </plugin>
     </actor>
   </world>
