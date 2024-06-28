@@ -73,7 +73,7 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     this->animationFactor = 4.5;
 
   // Add our own name to models we should ignore when avoiding obstacles.
-  if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) ==0)
+  if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) !=0)
    this->ignoreModels.push_back(this->actor->GetName());
 
   // Read in the other obstacles to ignore
@@ -174,18 +174,23 @@ void ActorPlugin::ChooseNewTarget()
 }
 
 void ActorPlugin::FrontDeskAreaHasVisitor(){
-  if((std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
-          this->world->ModelByIndex(i)->GetName()) == this->ignoreModels.end()) &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() < this.frontDesk1.X() &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() > this.actor.WorldPose().Pos().X() &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() < (this.actor.WorldPose().Pos().Y() + 1.5) &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() > (this.actor.WorldPose().Pos().Y() - 1.5) )
-  {
-     return true;
-  }
-  else
-  {
-     return false;
+
+  for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
+  { 
+      if((this->world->ModelByIndex(i)->GetPluginCount() ==1 || this->world->ModelByIndex(i)->GetType() == ACTOR) &&
+        (std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
+              this->world->ModelByIndex(i)->GetName()) != this->ignoreModels.end()) &&
+              this->world->ModelByIndex(i)->WorldPose().Pos().X() < this->frontDesk1.X() &&
+              this->world->ModelByIndex(i)->WorldPose().Pos().X() > this->actor->WorldPose().Pos().X() &&
+              this->world->ModelByIndex(i)->WorldPose().Pos().X() < (this->actor->WorldPose().Pos().Y() + 1.5) &&
+              this->world->ModelByIndex(i)->WorldPose().Pos().X() > (this->actor->WorldPose().Pos().Y() - 1.5) )
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
   }
 }
 ////////////////////////////////////////////////////////////////
