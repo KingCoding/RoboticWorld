@@ -73,7 +73,7 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     this->animationFactor = 4.5;
 
   // Add our own name to models we should ignore when avoiding obstacles.
-  if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
+  if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) ==0)
    this->ignoreModels.push_back(this->actor->GetName());
 
   // Read in the other obstacles to ignore
@@ -104,7 +104,7 @@ void ActorPlugin::Reset()
   else
     this->target = ignition::math::Vector3d(0, -5, 1.2138);
 
-  if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
+  if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0)
   {
     this->target = ignition::math::Vector3d(-2, -5.5, 1.25);
     this->SetAnimation(STANDING_ANIMATION);
@@ -128,17 +128,32 @@ void ActorPlugin::Reset()
 void ActorPlugin::ChooseNewTarget()
 {
 
-  if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
+  if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0)
   {
+      int visitorsInFrontDeskArea = 0;
       for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
-      {
-        double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
-            - newTarget).Length();
-        if (dist < 2.0)
+      { 
+        //Check if a visitor actor (a model that is not to be ignored) is in the front desk area
+        if((std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
+          this->world->ModelByIndex(i)->GetName()) == this->ignoreModels.end()) &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() < this.frontDesk1.X() &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() > this.actor.WorldPose().Pos().X() &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() < (this.actor.WorldPose().Pos().Y() + 1.5) &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() > (this.actor.WorldPose().Pos().Y() - 1.5) )
         {
-          newTarget = this->target;
+          visitorsInFrontDeskArea = visitorsInFrontDeskArea + 1;          
           break;
-        }    
+        }
+      }
+
+      if(visitorsInFrontDeskArea > 0)
+      {
+        this->SetAnimation(TALKING_ANIMATION);
+      }
+      else
+      {
+        this->SetAnimation(STANDING_ANIMATION);
+      }
   }
   else
   {
@@ -161,6 +176,22 @@ void ActorPlugin::ChooseNewTarget()
     }
     this->target = newTarget;
     }
+}
+
+void ActorPlugin::FrontDeskAreaHasVisitor(){
+  if((std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
+          this->world->ModelByIndex(i)->GetName()) == this->ignoreModels.end()) &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() < this.frontDesk1.X() &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() > this.actor.WorldPose().Pos().X() &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() < (this.actor.WorldPose().Pos().Y() + 1.5) &&
+          this->world->ModelByIndex(i)->WorldPose().Pos().X() > (this.actor.WorldPose().Pos().Y() - 1.5) )
+  {
+     return true;
+  }
+  else
+  {
+     return false;
+  }
 }
 ////////////////////////////////////////////////////////////////
 void ActorPlugin::SetAnimation(string & anim)
@@ -213,6 +244,12 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   if (distance < 0.3)
   {
     this->ChooseNewTarget();
+    //Since the administrator actor doesn't move, we can trigger its animation here for one second and return
+    if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0)
+    {
+      this->actor->SetScriptTime(1);
+      return;
+    }
     pos = this->target - pose.Pos();
   }
 
