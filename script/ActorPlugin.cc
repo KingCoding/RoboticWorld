@@ -157,7 +157,7 @@ void ActorPlugin::ChooseNewTarget()
     //If frontdesk1 is already the target, set frontdesk2 as target.
     //else check with probability if frontdesk is cleared if not, chose a regular target.
     //if yes, set frontdesk1 as target.
-    if()
+    if(this->target.Equal(this->))
     {
 
     }
