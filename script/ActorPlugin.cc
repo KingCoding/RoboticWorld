@@ -134,12 +134,7 @@ void ActorPlugin::ChooseNewTarget()
       for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
       { 
         //Check if a visitor actor (a model that is not to be ignored) is in the front desk area
-        if((std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
-          this->world->ModelByIndex(i)->GetName()) == this->ignoreModels.end()) &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() < this.frontDesk1.X() &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() > this.actor.WorldPose().Pos().X() &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() < (this.actor.WorldPose().Pos().Y() + 1.5) &&
-          this->world->ModelByIndex(i)->WorldPose().Pos().X() > (this.actor.WorldPose().Pos().Y() - 1.5) )
+        if(FrontDeskAreaHasVisitor())
         {
           visitorsInFrontDeskArea = visitorsInFrontDeskArea + 1;          
           break;
