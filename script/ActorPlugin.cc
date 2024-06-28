@@ -127,24 +127,40 @@ void ActorPlugin::Reset()
 /////////////////////////////////////////////////
 void ActorPlugin::ChooseNewTarget()
 {
-  ignition::math::Vector3d newTarget(this->target);
-  while ((newTarget - this->target).Length() < 2.0)
-  {
-    newTarget.X(ignition::math::Rand::DblUniform(-3, 3.5));
-    newTarget.Y(ignition::math::Rand::DblUniform(-10, 2));
 
-    for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
-    {
-      double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
-          - newTarget).Length();
-      if (dist < 2.0)
+  if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR))
+  {
+      for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
       {
-        newTarget = this->target;
-        break;
+        double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
+            - newTarget).Length();
+        if (dist < 2.0)
+        {
+          newTarget = this->target;
+          break;
+        }    
+  }
+  else
+  {
+    ignition::math::Vector3d newTarget(this->target);
+    while ((newTarget - this->target).Length() < 2.0)
+    {
+      newTarget.X(ignition::math::Rand::DblUniform(-3, 3.5));
+      newTarget.Y(ignition::math::Rand::DblUniform(-10, 2));
+  
+      for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
+      {
+        double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
+            - newTarget).Length();
+        if (dist < 2.0)
+        {
+          newTarget = this->target;
+          break;
+        }
       }
     }
-  }
-  this->target = newTarget;
+    this->target = newTarget;
+    }
 }
 ////////////////////////////////////////////////////////////////
 void ActorPlugin::SetAnimation(string & anim)
