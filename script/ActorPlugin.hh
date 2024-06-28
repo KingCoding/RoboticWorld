@@ -48,7 +48,7 @@ namespace gazebo
     private: void ChooseNewTarget();
 
     ///Helper method to check if a visitor actor is in the front desk area
-    private FrontDeskAreaHasVisitor();
+    private: boolean FrontDeskAreaHasVisitor();
 
     /// \brief Helper function to set a new animation for the current actor
     private: void SetAnimation(string & anim);
