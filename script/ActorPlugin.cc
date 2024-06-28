@@ -154,34 +154,46 @@ void ActorPlugin::ChooseNewTarget()
   }
   else
   {
-    //If frontdesk1 is already the target, set frontdesk2 as target.
-    //else check with probability if frontdesk is cleared if not, chose a regular target.
-    //if yes, set frontdesk1 as target.
-    if(this->target.Equal(this->))
-    {
-
-    }
-    
-    ignition::math::Vector3d newTarget(this->target);
-    while ((newTarget - this->target).Length() < 2.0)
-    {
-      newTarget.X(ignition::math::Rand::DblUniform(-3, 3.5));
-      newTarget.Y(ignition::math::Rand::DblUniform(-10, 2));
-  
-      for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
+      //If frontdesk1 is already the target, set frontdesk2 as target.
+      //else check with probability if frontdesk is cleared if not, chose a regular target.
+      //if yes, set frontdesk1 as target.
+      if(this->target.Equal(this->frontDesk1))
       {
-        double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
-            - newTarget).Length();
-        if (dist < 2.0)
-        {
-          newTarget = this->target;
-          break;
-        }
+         this->target = this->frontDesk2
       }
-    }
-    this->target = newTarget;
+      else
+      {
+         double deskVerdict = ignition::math::Rand::DblUniform(0, 1);
+         if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor())
+         {
+            this->target = this->frontDesk1
+         }
+         else
+         {
+            ignition::math::Vector3d newTarget(this->target);
+            while ((newTarget - this->target).Length() < 2.0)
+            {
+              newTarget.X(ignition::math::Rand::DblUniform(-3, 3.5));
+              newTarget.Y(ignition::math::Rand::DblUniform(-10, 2));
+          
+              for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
+              {
+                double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
+                    - newTarget).Length();
+                if (dist < 2.0)
+                {
+                  newTarget = this->target;
+                  break;
+                }
+              }
+            }
+            this->target = newTarget;           
+         }
+      }
+    
     }
 }
+
 
 boolean ActorPlugin::FrontDeskAreaHasVisitor(){
 
