@@ -36,6 +36,8 @@ GZ_REGISTER_MODEL_PLUGIN(ActorPlugin)
 
 #define VISITOR2_ACTOR "visitor2"
 
+#define FRONT_DESK_PROBABILITY 0.2
+
 
 /////////////////////////////////////////////////
 ActorPlugin::ActorPlugin()
@@ -152,6 +154,14 @@ void ActorPlugin::ChooseNewTarget()
   }
   else
   {
+    //If frontdesk1 is already the target, set frontdesk2 as target.
+    //else check with probability if frontdesk is cleared if not, chose a regular target.
+    //if yes, set frontdesk1 as target.
+    if()
+    {
+
+    }
+    
     ignition::math::Vector3d newTarget(this->target);
     while ((newTarget - this->target).Length() < 2.0)
     {
@@ -173,7 +183,7 @@ void ActorPlugin::ChooseNewTarget()
     }
 }
 
-void ActorPlugin::FrontDeskAreaHasVisitor(){
+boolean ActorPlugin::FrontDeskAreaHasVisitor(){
 
   for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
   { 
