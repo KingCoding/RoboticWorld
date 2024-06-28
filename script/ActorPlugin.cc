@@ -160,6 +160,7 @@ void ActorPlugin::ChooseNewTarget()
       if(this->target.Equal(this->frontDesk1))
       {
          this->target = this->frontDesk2
+         this->SetAnimation(TALKING_ANIMATION);
       }
       else
       {
@@ -167,6 +168,7 @@ void ActorPlugin::ChooseNewTarget()
          if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor())
          {
             this->target = this->frontDesk1
+            this->SetAnimation(WALKING_ANIMATION);
          }
          else
          {
@@ -188,6 +190,7 @@ void ActorPlugin::ChooseNewTarget()
               }
             }
             this->target = newTarget;           
+            this->SetAnimation(WALKING_ANIMATION);
          }
       }
     
@@ -267,9 +270,9 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   {
     this->ChooseNewTarget();
     //Since the administrator actor doesn't move, we can trigger its animation here for one second and return
-    if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0)
+    if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0 || this->target.Equal(this->frontDesk2))
     {
-      this->actor->SetScriptTime(1);
+      this->actor->SetScriptTime(2);
       return;
     }
     pos = this->target - pose.Pos();
