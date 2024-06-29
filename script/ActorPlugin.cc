@@ -217,7 +217,7 @@ boolean ActorPlugin::FrontDeskAreaHasVisitor(){
   }
 }
 ////////////////////////////////////////////////////////////////
-void ActorPlugin::SetAnimation(string & anim)
+void ActorPlugin::SetAnimation(string &anim)
 {
   this->trajectoryInfo.reset(new physics::TrajectoryInfo());
   this->trajectoryInfo->type = anim;
