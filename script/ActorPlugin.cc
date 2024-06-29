@@ -272,7 +272,8 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
     //Since the administrator actor doesn't move, we can trigger its animation here for one second and return
     if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0 || this->target.Equal(this->frontDesk2))
     {
-      this->actor->SetScriptTime(2);
+      this->actor->SetScriptTime(this->actor->ScriptTime() + 2);
+      this->lastUpdate = _info.simTime;
       return;
     }
     pos = this->target - pose.Pos();
