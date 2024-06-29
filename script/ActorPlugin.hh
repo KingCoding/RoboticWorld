@@ -51,7 +51,7 @@ namespace gazebo
     private: boolean FrontDeskAreaHasVisitor();
 
     /// \brief Helper function to set a new animation for the current actor
-    private: void SetAnimation(string & anim);
+    private: void SetAnimation(string &anim);
 
     /// \brief Helper function to avoid obstacles. This implements a very
     /// simple vector-field algorithm.
