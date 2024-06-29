@@ -133,14 +133,12 @@ void ActorPlugin::ChooseNewTarget()
   if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0)
   {
       int visitorsInFrontDeskArea = 0;
-      for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
-      { 
-        //Check if a visitor actor (a model that is not to be ignored) is in the front desk area
-        if(FrontDeskAreaHasVisitor())
-        {
-          visitorsInFrontDeskArea = visitorsInFrontDeskArea + 1;          
-          break;
-        }
+    
+      //Check if a visitor actor (a model that is not to be ignored) is in the front desk area
+      if(FrontDeskAreaHasVisitor())
+      {
+        visitorsInFrontDeskArea = visitorsInFrontDeskArea + 1;          
+        break;
       }
 
       if(visitorsInFrontDeskArea > 0)
@@ -165,7 +163,7 @@ void ActorPlugin::ChooseNewTarget()
       else
       {
          double deskVerdict = ignition::math::Rand::DblUniform(0, 1);
-         if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor())
+         if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor() !this->target.Equal(this->frontDesk2))
          {
             this->target = this->frontDesk1
             this->SetAnimation(WALKING_ANIMATION);
@@ -269,7 +267,8 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   if (distance < 0.3)
   {
     this->ChooseNewTarget();
-    //Since the administrator actor doesn't move, we can trigger its animation here for one second and return
+    //Since the administrator actor doesn't move, we can trigger its animation here for two second and return
+    //We also trigger the animation for the visitor actor at frontDesk2
     if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0 || this->target.Equal(this->frontDesk2))
     {
       this->actor->SetScriptTime(this->actor->ScriptTime() + 2);
