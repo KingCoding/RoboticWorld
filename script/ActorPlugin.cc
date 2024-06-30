@@ -199,7 +199,7 @@ bool ActorPlugin::FrontDeskAreaHasVisitor(){
 
   for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
   { 
-      if((this->world->ModelByIndex(i)->GetPluginCount() ==1 || this->world->ModelByIndex(i)->GetType() == ACTOR) &&
+      if((this->world->ModelByIndex(i)->GetPluginCount() ==1) && //|| this->world->ModelByIndex(i)->GetType() == ACTOR)
         (std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
               this->world->ModelByIndex(i)->GetName()) != this->ignoreModels.end()) &&
               this->world->ModelByIndex(i)->WorldPose().Pos().X() < this->frontDesk1.X() &&
