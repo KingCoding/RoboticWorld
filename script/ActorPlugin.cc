@@ -216,7 +216,7 @@ bool ActorPlugin::FrontDeskAreaHasVisitor(){
   }
 }
 ////////////////////////////////////////////////////////////////
-void ActorPlugin::SetAnimation(std::string &anim)
+void ActorPlugin::SetAnimation(std::string anim)
 {
   this->trajectoryInfo.reset(new physics::TrajectoryInfo());
   this->trajectoryInfo->type = anim;
