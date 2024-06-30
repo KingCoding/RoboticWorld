@@ -195,7 +195,7 @@ void ActorPlugin::ChooseNewTarget()
 }
 
 
-boolean ActorPlugin::FrontDeskAreaHasVisitor(){
+bool ActorPlugin::FrontDeskAreaHasVisitor(){
 
   for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
   { 
