@@ -163,7 +163,7 @@ void ActorPlugin::ChooseNewTarget()
       else
       {
          double deskVerdict = ignition::math::Rand::DblUniform(0, 1);
-         if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor() !this->target.Equal(this->frontDesk2))
+         if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor() && !this->target.Equal(this->frontDesk2))
          {
             this->target = this->frontDesk1
             this->SetAnimation(WALKING_ANIMATION);
@@ -217,7 +217,7 @@ boolean ActorPlugin::FrontDeskAreaHasVisitor(){
   }
 }
 ////////////////////////////////////////////////////////////////
-void ActorPlugin::SetAnimation(string &anim)
+void ActorPlugin::SetAnimation(std::string &anim)
 {
   this->trajectoryInfo.reset(new physics::TrajectoryInfo());
   this->trajectoryInfo->type = anim;
