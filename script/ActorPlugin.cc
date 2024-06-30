@@ -156,7 +156,7 @@ void ActorPlugin::ChooseNewTarget()
       //if yes, set frontdesk1 as target.
       if(this->target.Equal(this->frontDesk1))
       {
-         this->target = this->frontDesk2
+         this->target = this->frontDesk2;
          this->SetAnimation(TALKING_ANIMATION);
       }
       else
@@ -164,7 +164,7 @@ void ActorPlugin::ChooseNewTarget()
          double deskVerdict = ignition::math::Rand::DblUniform(0, 1);
          if(deskVerdict < FRONT_DESK_PROBABILITY && !FrontDeskAreaHasVisitor() && !this->target.Equal(this->frontDesk2))
          {
-            this->target = this->frontDesk1
+            this->target = this->frontDesk1;
             this->SetAnimation(WALKING_ANIMATION);
          }
          else
