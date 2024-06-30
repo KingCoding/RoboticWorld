@@ -137,8 +137,7 @@ void ActorPlugin::ChooseNewTarget()
       //Check if a visitor actor (a model that is not to be ignored) is in the front desk area
       if(FrontDeskAreaHasVisitor())
       {
-        visitorsInFrontDeskArea = visitorsInFrontDeskArea + 1;          
-        break;
+        visitorsInFrontDeskArea = visitorsInFrontDeskArea + 1;                
       }
 
       if(visitorsInFrontDeskArea > 0)
