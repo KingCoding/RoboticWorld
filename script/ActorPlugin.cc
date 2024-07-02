@@ -51,6 +51,7 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   this->actor = boost::dynamic_pointer_cast<physics::Actor>(_model);
   this->world = this->actor->GetWorld();
 
+  printf("print1\n");
   this->connections.push_back(event::Events::ConnectWorldUpdateBegin(
           std::bind(&ActorPlugin::OnUpdate, this, std::placeholders::_1)));
 
@@ -89,6 +90,8 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
       modelElem = modelElem->GetNextElement("model");
     }
   }
+
+  printf("print2\n");
 }
 
 /////////////////////////////////////////////////
@@ -124,6 +127,8 @@ void ActorPlugin::Reset()
         this->SetAnimation(WALKING_ANIMATION);
       }
   }
+
+  printf("print3\n");
 }
 
 /////////////////////////////////////////////////
