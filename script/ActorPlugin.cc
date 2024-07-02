@@ -280,7 +280,7 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
     //We also trigger the animation for the visitor actor at frontDesk2
     if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0 || this->target.Equal(this->frontDesk2))
     {
-      printf("this->actor->GetName()\n");
+      printf(this->actor->GetName());
       printf("print8\n");
       this->actor->SetScriptTime(this->actor->ScriptTime() + 2);
       this->lastUpdate = _info.simTime;
