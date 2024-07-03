@@ -51,7 +51,6 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   this->actor = boost::dynamic_pointer_cast<physics::Actor>(_model);
   this->world = this->actor->GetWorld();
 
-  printf("print1\n");
   this->connections.push_back(event::Events::ConnectWorldUpdateBegin(
           std::bind(&ActorPlugin::OnUpdate, this, std::placeholders::_1)));
 
@@ -91,7 +90,6 @@ void ActorPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     }
   }
 
-  printf("print2\n");
 }
 
 /////////////////////////////////////////////////
@@ -128,13 +126,11 @@ void ActorPlugin::Reset()
       }
   }
 
-  printf("print3\n");
 }
 
 /////////////////////////////////////////////////
 void ActorPlugin::ChooseNewTarget()
 {
-  printf("print6\n");
   if (this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0)
   {
       int visitorsInFrontDeskArea = 0;
@@ -198,13 +194,11 @@ void ActorPlugin::ChooseNewTarget()
     
     }
 
-  printf("print7\n");
 }
 
 
 bool ActorPlugin::FrontDeskAreaHasVisitor(){
 
-  printf("print4\n");
   for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
   { 
       if((this->world->ModelByIndex(i)->GetPluginCount() ==1) && //|| this->world->ModelByIndex(i)->GetType() == ACTOR)
@@ -223,7 +217,6 @@ bool ActorPlugin::FrontDeskAreaHasVisitor(){
       }
   }
 
-  printf("print5\n");
 }
 ////////////////////////////////////////////////////////////////
 void ActorPlugin::SetAnimation(std::string anim)
@@ -280,12 +273,9 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
     //We also trigger the animation for the visitor actor at frontDesk2
     if(this->actor->GetName().compare(ADMINISTRATOR_ACTOR) == 0 || this->target.Equal(this->frontDesk2))
     {
-      if(this->target.Equal(this->frontDesk2))
-          printf("visitor\n");
-      printf("print8\n");
       this->actor->SetScriptTime(this->actor->ScriptTime() + 2);
       this->lastUpdate = _info.simTime;
-      printf("print9\n");
+      
       return;
     }
     pos = this->target - pose.Pos();
